@@ -1,13 +1,12 @@
 <script lang="ts">
-  import { defineSystemEmbed } from '@stacklive/embed-sdk'; // Props
-  {{#each props}}
-    export let
-    {{name}}:
-    {{type}}{{#if default}} = {{{default}}}{{/if}};
-  {{/each}}
+  import { defineSystemEmbed } from '@stacklive/embed-sdk';
 
-  // Component description:
-  {{description}}
+  // Props
+{{#each props}}
+  export let {{name}}: {{type}}{{#if default}} = {{{default}}}{{/if}};
+{{/each}}
+
+  // Component description: {{description}}
 </script>
 
 <svelte:options tag="{{kebab}}-embed" />
@@ -19,7 +18,7 @@
 
 <style>
   .{{kebab}}-container {
-      width: 100%;
-      height: 100%;
-    }
+    width: 100%;
+    height: 100%;
+  }
 </style>

@@ -1,18 +1,21 @@
 <script lang="ts">
-  import { defineSystemEmbed } from '@stacklive/runtime-sdk'; // Props
-  {{#each props}}
-    export let
-    {{name}}:
-    {{type}}{{#if default}} = {{{default}}}{{/if}};
-  {{/each}}
+  import { defineSystemEmbed } from '@stacklive/runtime-sdk';
 
-  // WASM runtime render const embedConfig = { name: '{{pascal}}', description:
-  '{{description}}', props: {
-  {{#each props}}
-    {{name}}:
-    {{name}},
-  {{/each}}
-  } };
+  // Props
+{{#each props}}
+  export let {{name}}: {{type}}{{#if default}} = {{{default}}}{{/if}};
+{{/each}}
+
+  // WASM runtime render
+  const embedConfig = {
+    name: '{{pascal}}',
+    description: '{{description}}',
+    props: {
+{{#each props}}
+      {{name}}: {{name}},
+{{/each}}
+    }
+  };
 </script>
 
 <svelte:options tag="{{kebab}}-runtime" />
@@ -24,7 +27,7 @@
 
 <style>
   .{{kebab}}-runtime-container {
-      width: 100%;
-      height: 100%;
-    }
+    width: 100%;
+    height: 100%;
+  }
 </style>

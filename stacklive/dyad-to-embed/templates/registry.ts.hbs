@@ -1,14 +1,22 @@
-// Auto-generated embed registry import { defineSystemEmbed } from
-'@stacklive/embed-sdk'; export const embedRegistry = {
+// Auto-generated embed registry
+import { defineSystemEmbed } from '@stacklive/embed-sdk';
+
+export const embedRegistry = {
 {{#each components}}
-  '{{kebab}}': { legacy: () => import('./{{kebab}}.upgraded.svelte'), runtime:
-  () => import('./{{kebab}}.runtime.svelte'), schema: { name: '{{pascal}}',
-  description: '{{description}}', props: [
-  {{#each props}}
-    { name: '{{name}}', type: '{{type}}'{{#if default}}, default:
-      {{{default}}}{{/if}}
-    },
-  {{/each}}
-  ] } },
+  '{{kebab}}': {
+    legacy: () => import('./{{kebab}}.upgraded.svelte'),
+    runtime: () => import('./{{kebab}}.runtime.svelte'),
+    schema: {
+      name: '{{pascal}}',
+      description: '{{description}}',
+      props: [
+{{#each props}}
+        { name: '{{name}}', type: '{{type}}'{{#if default}}, default: {{{default}}}{{/if}} },
 {{/each}}
-}; export default embedRegistry;
+      ]
+    }
+  },
+{{/each}}
+};
+
+export default embedRegistry;
