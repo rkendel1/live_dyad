@@ -7,3 +7,6 @@ drizzle/
 **/snapshots/**
 # test fixtures
 e2e-tests/fixtures/**
+
+# template files
+stacklive/dyad-to-embed/templates/**
