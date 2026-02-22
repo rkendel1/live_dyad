@@ -249,6 +249,22 @@ export const AgentToolConsentSchema = z.enum(["ask", "always", "never"]);
 export type AgentToolConsent = z.infer<typeof AgentToolConsentSchema>;
 
 /**
+ * Zod schema for StackLive generation target configuration
+ */
+export const StackLiveTargetConfigSchema = z.object({
+  target: z.enum([
+    "stacklive-legacy-embed",
+    "stacklive-runtime-embed",
+    "stacklive-creator-manifest",
+  ]),
+  componentType: z.enum(["primitive", "system", "experience"]),
+  hasVariants: z.boolean(),
+});
+export type StackLiveTargetConfigSchemaType = z.infer<
+  typeof StackLiveTargetConfigSchema
+>;
+
+/**
  * Zod schema for user settings
  */
 export const UserSettingsSchema = z
@@ -298,6 +314,7 @@ export const UserSettingsSchema = z
     acceptedCommunityCode: z.boolean().optional(),
     zoomLevel: ZoomLevelSchema.optional(),
     previewDeviceMode: DeviceModeSchema.optional(),
+    stackliveTargetConfig: StackLiveTargetConfigSchema.optional(),
 
     enableAutoFixProblems: z.boolean().optional(),
     enableNativeGit: z.boolean().optional(),

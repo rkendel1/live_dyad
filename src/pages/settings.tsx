@@ -16,7 +16,6 @@ import { useRouter } from "@tanstack/react-router";
 import { GitHubIntegration } from "@/components/GitHubIntegration";
 import { VercelIntegration } from "@/components/VercelIntegration";
 import { SupabaseIntegration } from "@/components/SupabaseIntegration";
-
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { AutoFixProblemsSwitch } from "@/components/AutoFixProblemsSwitch";
@@ -31,6 +30,9 @@ import { ZoomSelector } from "@/components/ZoomSelector";
 import { DefaultChatModeSelector } from "@/components/DefaultChatModeSelector";
 import { useSetAtom } from "jotai";
 import { activeSettingsSectionAtom } from "@/atoms/viewAtoms";
+import { StackLiveTargetSelector } from "@/components/StackLiveTargetSelector";
+import { DEFAULT_STACKLIVE_CONFIG } from "@/lib/stacklive-generation-target";
+import type { StackLiveTargetConfig } from "@/lib/stacklive-generation-target";
 
 export default function SettingsPage() {
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
@@ -82,6 +84,7 @@ export default function SettingsPage() {
           <GeneralSettings appVersion={appVersion} />
           <WorkflowSettings />
           <AISettings />
+          <StackLiveSettings />
 
           <div
             id="provider-settings"
@@ -349,6 +352,35 @@ export function AISettings() {
       <div className="mt-4">
         <MaxChatTurnsSelector />
       </div>
+    </div>
+  );
+}
+
+export function StackLiveSettings() {
+  const { settings, updateSettings } = useSettings();
+
+  const handleConfigChange = (config: StackLiveTargetConfig) => {
+    updateSettings({
+      stackliveTargetConfig: config,
+    });
+  };
+
+  return (
+    <div
+      id="stacklive-settings"
+      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6"
+    >
+      <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+        StackLive Generation Settings
+      </h2>
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+        Configure how Dyad generates StackLive components and embeds.
+      </p>
+
+      <StackLiveTargetSelector
+        config={settings?.stackliveTargetConfig || DEFAULT_STACKLIVE_CONFIG}
+        onChange={handleConfigChange}
+      />
     </div>
   );
 }
