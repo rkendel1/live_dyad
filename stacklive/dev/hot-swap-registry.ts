@@ -6,7 +6,7 @@
  * and fallback to simple DOM replacement (for legacy components).
  */
 
-import { getHotRegistry } from "../../runtime/hot/registry";
+import { getHotRegistry } from "../../runtime/hot";
 
 /**
  * Hot swap with registry support
@@ -60,10 +60,12 @@ export function hotSwapWithRegistry(moduleId?: string) {
 }
 
 /**
- * Legacy hot swap function for backward compatibility
- * Uses simple DOM replacement without registry support
+ * Simple hot swap function without registry support
+ * Uses simple DOM replacement for legacy components
+ * Note: This is a duplicate of hotSwap from hot-swap-custom-element.ts
+ * but kept here for convenience when using this module standalone
  */
-export function hotSwap() {
+export function simpleHotSwap() {
   document.querySelectorAll("[data-stacklive-preview]").forEach((node) => {
     const tag = node.tagName.toLowerCase();
     const newEl = document.createElement(tag);
