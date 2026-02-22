@@ -11,6 +11,7 @@ export { startStackLiveWatcher, stopStackLiveWatcher } from "./unified-watcher";
 export { classifyChange } from "./change-classifier";
 export { runHotInstallPipeline } from "./hot-install-pipeline";
 export { hotSwap } from "./hot-swap-custom-element";
+export { hotSwapWithRegistry } from "./hot-swap-registry";
 export { runtimeHotPatch } from "./runtime-hot-patch";
 
 export type { ChangeType } from "./change-classifier";
