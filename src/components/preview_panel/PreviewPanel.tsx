@@ -18,6 +18,7 @@ import { useRunApp } from "@/hooks/useRunApp";
 import { PublishPanel } from "./PublishPanel";
 import { SecurityPanel } from "./SecurityPanel";
 import { useSupabase } from "@/hooks/useSupabase";
+import { StackLivePanel } from "./StackLivePanel";
 
 interface ConsoleHeaderProps {
   isOpen: boolean;
@@ -147,6 +148,8 @@ export function PreviewPanel() {
                 <PublishPanel />
               ) : previewMode === "security" ? (
                 <SecurityPanel />
+              ) : previewMode === "stacklive" ? (
+                <StackLivePanel />
               ) : (
                 <Problems />
               )}

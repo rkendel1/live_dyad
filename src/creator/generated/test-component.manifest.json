@@ -1,0 +1,14 @@
+{
+  "name": "TestComponent",
+  "kebabName": "test-component",
+  "description": "A test component for StackLive demo",
+  "componentType": "primitive",
+  "props": [
+    {
+      "name": "title",
+      "type": "string",
+      "default": "Hello World"
+    }
+  ],
+  "hasVariants": false
+}

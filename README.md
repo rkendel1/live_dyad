@@ -11,12 +11,25 @@ More info at: [https://dyad.sh/](https://dyad.sh/)
 - ⚡️ **Local**: Fast, private and no lock-in.
 - 🛠 **Bring your own keys**: Use your own AI API keys — no vendor lock-in.
 - 🖥️ **Cross-platform**: Easy to run on Mac or Windows.
+- 📦 **StackLive Integration**: Generate and view embeddable components with the built-in StackLive output panel.
 
 ## 📦 Download
 
 No sign-up required. Just download and go.
 
 ### [👉 Download for your platform](https://www.dyad.sh/#download)
+
+## 📚 StackLive Output
+
+New! View your generated StackLive components directly in the app:
+
+1. Open any app in Dyad
+2. Click the **StackLive** tab in the preview panel
+3. Browse generated manifests and embed components
+4. View syntax-highlighted code with metadata
+5. Copy to clipboard with one click
+
+For more details, see [STACKLIVE_OUTPUT_GUIDE.md](./STACKLIVE_OUTPUT_GUIDE.md).
 
 ## 🤝 Community
 

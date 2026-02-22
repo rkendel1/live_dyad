@@ -49,6 +49,7 @@ export { upgradeContracts } from "./upgrade";
 export { visualEditingContracts } from "./visual-editing";
 export { securityContracts } from "./security";
 export { miscContracts, miscEvents } from "./misc";
+export { stackliveContracts } from "./stacklive";
 
 // =============================================================================
 // Client Exports
@@ -77,6 +78,7 @@ export { upgradeClient } from "./upgrade";
 export { visualEditingClient } from "./visual-editing";
 export { securityClient } from "./security";
 export { miscClient, miscEventClient } from "./misc";
+export { stackliveClient } from "./stacklive";
 
 // =============================================================================
 // Type Exports
@@ -276,6 +278,16 @@ export type { SecurityReviewResult } from "./security";
 // Misc types
 export type { ChatLogsData, DeepLinkData, AppOutput, EnvVar } from "./misc";
 
+// StackLive types
+export type {
+  StackLiveFile,
+  StackLiveDirectory,
+  GetStackLiveFilesInput,
+  GetStackLiveFilesOutput,
+  ReadStackLiveFileInput,
+  ReadStackLiveFileOutput,
+} from "./stacklive";
+
 // =============================================================================
 // Schema Exports (for validation in handlers/components)
 // =============================================================================
@@ -331,6 +343,7 @@ import { upgradeClient } from "./upgrade";
 import { visualEditingClient } from "./visual-editing";
 import { securityClient } from "./security";
 import { miscClient, miscEventClient } from "./misc";
+import { stackliveClient } from "./stacklive";
 
 /**
  * Unified IPC client with all domains organized by namespace.
@@ -385,6 +398,7 @@ export const ipc = {
   visualEditing: visualEditingClient,
   security: securityClient,
   misc: miscClient,
+  stacklive: stackliveClient,
 
   // Event clients for main->renderer pub/sub
   events: {
