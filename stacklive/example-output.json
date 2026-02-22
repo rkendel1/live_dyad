@@ -1,0 +1,67 @@
+{
+  "components": [
+    {
+      "name": "user_card",
+      "description": "A card component displaying user information",
+      "props": [
+        {
+          "name": "username",
+          "type": "string",
+          "default": "Anonymous"
+        },
+        {
+          "name": "age",
+          "type": "number",
+          "default": 0
+        },
+        {
+          "name": "isActive",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "name": "button_component",
+      "description": "A customizable button component",
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "default": "Click me"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "default": "primary"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": false
+        }
+      ]
+    },
+    {
+      "name": "data_table",
+      "description": "A table component for displaying data",
+      "props": [
+        {
+          "name": "data",
+          "type": "array",
+          "default": []
+        },
+        {
+          "name": "columns",
+          "type": "array",
+          "default": []
+        },
+        {
+          "name": "pageSize",
+          "type": "number",
+          "default": 10
+        }
+      ]
+    }
+  ]
+}

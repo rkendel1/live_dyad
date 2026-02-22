@@ -2,6 +2,19 @@
 
 This module provides a code generation adapter that converts Dyad output into StackLive embeds.
 
+## Installation
+
+Before using this module, ensure you have installed the required dependencies:
+
+```bash
+npm install
+```
+
+The main dependencies required are:
+
+- `handlebars` - Template engine for generating Svelte components
+- `@types/handlebars` - TypeScript type definitions for Handlebars
+
 ## Features
 
 - **Dual-mode embed generation**:
@@ -30,6 +43,10 @@ stacklive/
 
 ## Usage
 
+### Quick Start
+
+First, ensure you have a Dyad output JSON file. An example is provided in `example-output.json`.
+
 ### Running the CLI
 
 ```bash
@@ -37,15 +54,35 @@ cd stacklive
 npx tsx cli.ts
 ```
 
+### Testing the Utilities
+
+You can verify the utility functions work correctly without installing all dependencies:
+
+```bash
+cd stacklive
+node verify-utils.js
+```
+
+### Testing the Full Generator
+
+To test the complete generation with templates:
+
+```bash
+cd stacklive
+npx tsx test-generator.ts
+```
+
+This will generate example embeds in `/tmp/stacklive-test-output`.
+
 ### Programmatic Usage
 
 ```typescript
-import { generateEmbeds } from './dyad-to-embed/generator';
-import dyadOutput from '../.dyad/output.json';
+import { generateEmbeds } from "./dyad-to-embed/generator";
+import dyadOutput from "../.dyad/output.json";
 
 await generateEmbeds({
   dyad: dyadOutput,
-  outDir: '../src/embed-upgrader-tool/components-upgraded'
+  outDir: "../src/embed-upgrader-tool/components-upgraded",
 });
 ```
 
