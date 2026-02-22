@@ -18,7 +18,7 @@ export default {
   },
 
   dev: {
-    // Default development server URL
+    // Default development server URL (port 32100 is the standard StackLive dev server port)
     server: "http://localhost:32100",
     // Auto-start file watcher in dev mode
     watcher: true,

@@ -5,6 +5,8 @@
  * This is called automatically when the Electron app starts in dev mode.
  */
 
+// Note: stacklive is a top-level directory (sibling to src) containing the StackLive
+// integration code. The relative import reflects the actual project structure.
 import { startStackLiveWatcher } from "../../stacklive/dev";
 import log from "electron-log";
 
