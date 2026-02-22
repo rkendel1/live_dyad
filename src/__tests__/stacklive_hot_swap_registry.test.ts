@@ -59,9 +59,9 @@ describe("hot-swap-registry", () => {
       const consoleSpy = vi.spyOn(console, "log");
       hotSwapWithRegistry();
 
-      // Should log that it replaced a legacy element
+      // Should log that it's swapping non-registry elements
       expect(consoleSpy).toHaveBeenCalledWith(
-        expect.stringContaining("Replaced legacy element"),
+        expect.stringContaining("Swapping non-registry elements"),
       );
 
       // Verify the element was replaced
@@ -143,7 +143,7 @@ describe("hot-swap-registry", () => {
         expect.stringContaining("registry-managed"),
       );
       expect(consoleSpy).toHaveBeenCalledWith(
-        expect.stringContaining("Replaced legacy element"),
+        expect.stringContaining("Swapping non-registry elements"),
       );
     });
 
