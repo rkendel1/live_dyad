@@ -240,6 +240,15 @@ export const queryKeys = {
     byApp: ({ appId }: { appId: number | null }) =>
       ["app-env-vars", appId] as const,
   },
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // StackLive
+  // ─────────────────────────────────────────────────────────────────────────────
+  stacklive: {
+    all: ["stacklive"] as const,
+    list: ["stacklive", "files"] as const,
+    file: ({ path }: { path: string }) => ["stacklive", "file", path] as const,
+  },
 } as const;
 
 // ─────────────────────────────────────────────────────────────────────────────
