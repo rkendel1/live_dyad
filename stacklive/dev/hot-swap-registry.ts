@@ -7,76 +7,62 @@
  */
 
 import { getHotRegistry } from "../../runtime/hot";
+import { hotSwap as legacyHotSwap } from "./hot-swap-custom-element";
 
 /**
  * Hot swap with registry support
  *
  * This function:
- * 1. Attempts to use the hot registry for state-preserving swaps
- * 2. Falls back to simple DOM replacement for non-registered components
+ * 1. Checks which elements are managed by the hot registry
+ * 2. For registry-managed elements, logs that they're handled by the registry
+ * 3. For non-registry elements, delegates to the legacy hotSwap function
  *
- * @param moduleId - Optional module ID to swap. If not provided, swaps all preview elements
+ * @param moduleId - Optional module ID to swap. If not provided, checks all preview elements
  */
 export function hotSwapWithRegistry(moduleId?: string) {
   const registry = getHotRegistry();
   const elements = document.querySelectorAll("[data-stacklive-preview]");
 
+  let hasRegistryManagedElements = false;
+  let hasLegacyElements = false;
+
   elements.forEach((node) => {
     if (!(node instanceof HTMLElement)) return;
 
     const tag = node.tagName.toLowerCase();
-
-    // Check if this element is managed by the registry
     const instanceRecord = registry.getInstance(node);
 
     if (instanceRecord) {
       // Registry-managed component
-      // If moduleId is specified, only swap matching modules
-      if (moduleId && instanceRecord.moduleId !== moduleId) {
-        return;
+      // If moduleId is specified, only count matching modules
+      if (!moduleId || instanceRecord.moduleId === moduleId) {
+        hasRegistryManagedElements = true;
+        console.log(
+          `[HotSwap] Element ${tag} is registry-managed (${instanceRecord.moduleId})`,
+        );
       }
-
-      // The actual swap is handled by the registry when a new module is registered
-      // Here we just log that we found a registered instance
-      console.log(
-        `[HotSwap] Element ${tag} is registry-managed (${instanceRecord.moduleId})`,
-      );
     } else {
-      // Legacy component - use simple DOM replacement
-      const newEl = document.createElement(tag);
-
-      // Copy all attributes to preserve component props/state
-      Array.from(node.attributes).forEach((attr) =>
-        newEl.setAttribute(attr.name, attr.value),
-      );
-
-      // Replace the old element with the new one
-      // This triggers the custom element's connectedCallback
-      node.replaceWith(newEl);
-
-      console.log(`[HotSwap] Replaced legacy element ${tag}`);
+      // Legacy component
+      hasLegacyElements = true;
     }
   });
+
+  // For legacy elements, use the standard hotSwap function
+  if (hasLegacyElements) {
+    console.log("[HotSwap] Swapping non-registry elements using legacy method");
+    legacyHotSwap();
+  }
+
+  if (!hasRegistryManagedElements && !hasLegacyElements) {
+    console.log("[HotSwap] No elements found to swap");
+  }
 }
 
 /**
  * Simple hot swap function without registry support
  * Uses simple DOM replacement for legacy components
- * Note: This is a duplicate of hotSwap from hot-swap-custom-element.ts
- * but kept here for convenience when using this module standalone
+ * Delegates to the existing hotSwap function from hot-swap-custom-element
  */
 export function simpleHotSwap() {
-  document.querySelectorAll("[data-stacklive-preview]").forEach((node) => {
-    const tag = node.tagName.toLowerCase();
-    const newEl = document.createElement(tag);
-
-    // Copy all attributes to preserve component props/state
-    Array.from(node.attributes).forEach((attr) =>
-      newEl.setAttribute(attr.name, attr.value),
-    );
-
-    // Replace the old element with the new one
-    // This triggers the custom element's connectedCallback
-    node.replaceWith(newEl);
-  });
+  legacyHotSwap();
 }

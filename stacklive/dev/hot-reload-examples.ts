@@ -5,7 +5,7 @@
  * for state-preserving hot reload.
  */
 
-import { getHotRegistry, type HotModule } from "../runtime/hot/registry";
+import { getHotRegistry, type HotModule } from "../runtime/hot";
 import { hotSwapWithRegistry } from "./hot-swap-registry";
 
 /**
