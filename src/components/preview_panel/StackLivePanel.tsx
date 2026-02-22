@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { RefreshCw, FileCode, Folder, Download } from "lucide-react";
 import { ipc } from "@/ipc/types";
-import type { StackLiveFile, StackLiveDirectory } from "@/ipc/types";
+import type { StackLiveFile } from "@/ipc/types";
 import { useQuery } from "@tanstack/react-query";
 import { queryKeys } from "@/lib/queryKeys";
 import { cn } from "@/lib/utils";
@@ -46,7 +46,9 @@ function FileList({ title, files, selectedFile, onFileSelect }: FileListProps) {
           <Folder size={16} />
           {title}
         </div>
-        <div className="text-sm text-muted-foreground pl-6">No files generated</div>
+        <div className="text-sm text-muted-foreground pl-6">
+          No files generated
+        </div>
       </div>
     );
   }
@@ -188,7 +190,8 @@ export function StackLivePanel() {
   });
 
   const totalFiles =
-    (files?.creatorGenerated.length || 0) + (files?.embedComponents.length || 0);
+    (files?.creatorGenerated.length || 0) +
+    (files?.embedComponents.length || 0);
 
   // Auto-select first file when data loads
   useEffect(() => {
@@ -230,8 +233,8 @@ export function StackLivePanel() {
             <FileCode size={48} className="mx-auto mb-4 opacity-50" />
             <h3 className="font-medium mb-2">No StackLive Output Yet</h3>
             <p className="text-sm max-w-md">
-              Generated components will appear here when you create StackLive embeds.
-              Configure StackLive generation in Settings.
+              Generated components will appear here when you create StackLive
+              embeds. Configure StackLive generation in Settings.
             </p>
           </div>
         </div>

@@ -20,7 +20,10 @@ const EMBED_COMPONENTS_DIR = path.join(
  * Get file type based on extension
  */
 function getFileType(filename: string): StackLiveFile["type"] {
-  if (filename.endsWith(".manifest.json") || filename.endsWith(".manifest.ts")) {
+  if (
+    filename.endsWith(".manifest.json") ||
+    filename.endsWith(".manifest.ts")
+  ) {
     return "manifest";
   }
   if (filename.endsWith(".svelte")) {
@@ -76,17 +79,20 @@ export function registerStackLiveHandlers() {
     };
   });
 
-  createTypedHandler(stackliveContracts.readFile, async (_, { path: filePath }) => {
-    try {
-      const content = await fs.readFile(filePath, "utf-8");
-      return {
-        content,
-        path: filePath,
-      };
-    } catch (error) {
-      throw new Error(
-        `Failed to read file: ${error instanceof Error ? error.message : "Unknown error"}`,
-      );
-    }
-  });
+  createTypedHandler(
+    stackliveContracts.readFile,
+    async (_, { path: filePath }) => {
+      try {
+        const content = await fs.readFile(filePath, "utf-8");
+        return {
+          content,
+          path: filePath,
+        };
+      } catch (error) {
+        throw new Error(
+          `Failed to read file: ${error instanceof Error ? error.message : "Unknown error"}`,
+        );
+      }
+    },
+  );
 }

@@ -71,4 +71,3 @@ export type ReadStackLiveFileInput = z.infer<
 export type ReadStackLiveFileOutput = z.infer<
   (typeof stackliveContracts)["readFile"]["output"]
 >;
-
