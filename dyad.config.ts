@@ -1,6 +1,6 @@
 /**
  * Dyad Configuration
- * 
+ *
  * This configuration file enables Dyad to:
  * - Detect this project as a StackLive integration
  * - Know where to write generated code

@@ -1,6 +1,6 @@
 /**
  * Dyad Development Watcher
- * 
+ *
  * Wrapper for starting the StackLive file watcher in development mode.
  * This is called automatically when the Electron app starts in dev mode.
  */
@@ -23,7 +23,7 @@ export function startDyadDev() {
   }
 
   logger.info("🧠 Starting Dyad development watcher");
-  
+
   try {
     startStackLiveWatcher();
     logger.info("🧠 Dyad watcher connected");
