@@ -39,10 +39,7 @@ const state = createVersionedState<MyComponentState>(stateVersion, {
 Manages migrations between state versions:
 
 ```typescript
-import {
-  getMigrationRegistry,
-  type Migration,
-} from "stacklive/runtime/state";
+import { getMigrationRegistry, type Migration } from "stacklive/runtime/state";
 
 const registry = getMigrationRegistry();
 
