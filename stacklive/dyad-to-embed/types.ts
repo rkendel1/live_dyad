@@ -1,3 +1,5 @@
+import type { StackLiveTargetConfig } from "../../src/lib/stacklive-generation-target";
+
 export interface DyadComponent {
   name: string;
   description?: string;
@@ -15,6 +17,11 @@ export interface DyadOutput {
 export interface GenerateEmbedsOptions {
   dyad: DyadOutput;
   outDir: string;
+  /**
+   * Optional StackLive target configuration.
+   * If not provided, generates all formats (legacy + runtime).
+   */
+  targetConfig?: StackLiveTargetConfig;
 }
 
 export interface ComponentNames {
