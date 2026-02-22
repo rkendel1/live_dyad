@@ -17,11 +17,6 @@ const logger = log.scope("dyad-dev");
  * - Auto-install primitives
  */
 export function startDyadDev() {
-  if (process.env.NODE_ENV === "production") {
-    logger.debug("Skipping Dyad dev mode in production");
-    return;
-  }
-
   logger.info("🧠 Starting Dyad development watcher");
 
   try {
@@ -29,5 +24,8 @@ export function startDyadDev() {
     logger.info("🧠 Dyad watcher connected");
   } catch (error) {
     logger.error("Failed to start Dyad watcher:", error);
+    logger.warn(
+      "The app will continue running, but hot reload for StackLive components will not be available.",
+    );
   }
 }
