@@ -6,7 +6,7 @@
  * and fallback to simple DOM replacement (for legacy components).
  */
 
-import { getHotRegistry } from "../../runtime/hot";
+import { getHotRegistry } from "../runtime/hot";
 import { hotSwap as legacyHotSwap } from "./hot-swap-custom-element";
 
 /**
