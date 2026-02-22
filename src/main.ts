@@ -32,7 +32,7 @@ import { cleanupOldAiMessagesJson } from "./pro/main/ipc/handlers/local_agent/ai
 import fs from "fs";
 import { gitAddSafeDirectory } from "./ipc/utils/git_utils";
 import { getDyadAppsBaseDirectory } from "./paths/paths";
-import { startStackLiveWatcher } from "../stacklive/dev";
+import { startDyadDev } from "./dev/start-dyad-watcher";
 
 log.errorHandler.startCatching();
 log.eventLogger.startLogging();
@@ -127,8 +127,7 @@ export async function onReady() {
 
   // Start StackLive file watcher in development mode
   if (!app.isPackaged) {
-    logger.info("Starting StackLive hot reload watcher");
-    startStackLiveWatcher();
+    startDyadDev();
   }
 
   logger.info("Auto-update enabled=", settings.enableAutoUpdate);
