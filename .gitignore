@@ -108,3 +108,48 @@ userData/
 
 # Python
 __pycache__/
+
+# =============================
+# Dyad Integration (local tool workspace)
+# =============================
+
+# Dyad local workspace and cache (never commit)
+.dyad/
+.dyad-cache/
+.dyad-tmp/
+.dyad-workspace/
+
+# Local Dyad configuration overrides
+dyad.local.*
+
+# Prevent committing Dyad app if cloned inside repo
+/tools/dyad/
+/apps/dyad/
+
+# OS artifacts from Electron builds
+dyad-desktop/
+dyad-electron/
+
+# =============================
+# Generated Code (ephemeral during live sessions)
+# =============================
+
+# Temporary files during generation
+src/creator/generated/**/*.tmp
+src/creator/generated/**/*.log
+
+# Source maps for embed components
+public/embed-components/**/*.map
+
+# =============================
+# Development Runtime Cache
+# =============================
+
+.runtime-cache/
+.signal-cache/
+
+# =============================
+# Dyad Development Logs
+# =============================
+
+dyad-debug.log

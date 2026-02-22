@@ -129,6 +129,7 @@ export async function onReady() {
   if (!app.isPackaged) {
     logger.info("Starting StackLive hot reload watcher");
     startStackLiveWatcher();
+    logger.info("🧠 Dyad watcher connected");
   }
 
   logger.info("Auto-update enabled=", settings.enableAutoUpdate);
