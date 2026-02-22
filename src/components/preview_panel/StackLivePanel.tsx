@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { RefreshCw, FileCode, Folder, Download } from "lucide-react";
+import { RefreshCw, FileCode, Folder, Copy } from "lucide-react";
 import { ipc } from "@/ipc/types";
 import type { StackLiveFile } from "@/ipc/types";
 import { useQuery } from "@tanstack/react-query";
@@ -145,7 +145,7 @@ function FileViewer({ file }: FileViewerProps) {
           className="text-xs px-2 py-1 rounded hover:bg-accent flex items-center gap-1"
           title="Copy to clipboard"
         >
-          <Download size={12} />
+          <Copy size={12} />
           Copy
         </button>
       </div>
